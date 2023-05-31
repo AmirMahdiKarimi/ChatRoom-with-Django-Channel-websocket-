@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+    <style>
+        li {
+          width: 25%;
+          list-style: none;
+          background-color: aquamarine;
+          margin: 1px;
+          padding: 10px;
+          border-radius: 4px;
+        }
+        li:hover {
+            background-color: aqua;
+            border-radius: 10px;
+        }
+        a{
+            color : #000;
+            text-decoration: none
+        }
+    </style>
+</head>
+<body>
+    What chat room would you like to enter?<br>
+    <!-- <input id="room-name-input" type="text" size="100"><br> -->
+    <!-- <input id="room-name-submit" type="button" value="Enter"> -->
+    <ul>
+        {% for group in groups_detail %}
+            <a href="{{ group.name }}"><li>{{group.name}} : {{ group.count }}</li></a>
+        {% endfor %}    
+    </ul>
+
+    <input id="log-out" type="button" value="Log out">
+
+    <script>
+        // document.querySelector('#room-name-input').focus();
+        // document.querySelector('#room-name-input').onkeyup = function(e) {
+        //     if (e.keyCode === 13) {  // enter, return
+        //         document.querySelector('#room-name-submit').click();
+        //     }
+        // };
+
+        // document.querySelector('#room-name-submit').onclick = function(e) {
+        //     var roomName = document.querySelector('#room-name-input').value;
+        //     if (roomName) {
+        //         window.location.pathname = '/chat/' + roomName + '/';
+        //     }
+        // };
+
+        document.getElementById("log-out").addEventListener("click", function() {
+            window.location.href = "http://127.0.0.1:8000/logout/"; 
+        });
+    </script>
+</body>
+</html>
